@@ -45,7 +45,7 @@ import {isEmojiSupported} from 'is-emoji-supported';
 if (isEmojiSupported('🦄')) {
   alert('Houra 🦄 is supported');
 } else {
-  alert('No support for unicode emoji yet');
+  alert('No support for unicorn emoji yet');
 }
 ```
 
