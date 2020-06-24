@@ -48,6 +48,12 @@ const isSupported = (() => {
   }
 
   const ctx = document.createElement('canvas').getContext('2d');
+
+  // In jest env, ctx is null
+  if (!ctx) {
+    return () => false;
+  }
+
   const CANVAS_HEIGHT = 25;
   const CANVAS_WIDTH = 20;
   const textSize = Math.floor(CANVAS_HEIGHT / 2);
