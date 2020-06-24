@@ -47,12 +47,14 @@ const isSupported = (() => {
     return () => false;
   }
 
-  const ctx = document.createElement('canvas').getContext('2d');
+  const canvas = document.createElement('canvas');
 
-  // In jest env, ctx is null
-  if (!ctx) {
+  // In jest env, canvas has no getContext method
+  if (!canvas || !Object.prototype.hasOwnProperty('getContext')) {
     return () => false;
   }
+
+  const ctx = canvas.getContext('2d');
 
   const CANVAS_HEIGHT = 25;
   const CANVAS_WIDTH = 20;
