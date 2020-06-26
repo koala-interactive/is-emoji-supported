@@ -1,6 +1,6 @@
 {
   "name": "is-emoji-supported",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Detect if the current device support the specified emoji",
   "main": "./dist/cjs/is-emoji-supported.js",
   "module": "./dist/esm/is-emoji-supported.js",
