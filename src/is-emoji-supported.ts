@@ -50,7 +50,7 @@ const isSupported = (() => {
   const canvas = document.createElement('canvas');
 
   // In jest env, canvas has no getContext method
-  if (!canvas || !Object.prototype.hasOwnProperty('getContext')) {
+  if (!canvas || typeof canvas.getContext !== 'function') {
     return () => false;
   }
 
