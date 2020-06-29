@@ -42,19 +42,15 @@ export function setCacheHandler(store: TCache): void {
  * @returns {boolean}
  */
 const isSupported = (() => {
+  let ctx = null;
+  try {
+    ctx = document.createElement('canvas').getContext('2d');
+  } catch {}
+
   // Not in browser env
-  if (typeof document === 'undefined') {
+  if (!ctx) {
     return () => false;
   }
-
-  const canvas = document.createElement('canvas');
-
-  // In jest env, canvas has no getContext method
-  if (!canvas || typeof canvas.getContext !== 'function') {
-    return () => false;
-  }
-
-  const ctx = canvas.getContext('2d');
 
   const CANVAS_HEIGHT = 25;
   const CANVAS_WIDTH = 20;
