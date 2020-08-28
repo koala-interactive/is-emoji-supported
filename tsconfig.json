@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
-    "sourceMap": true,
     "lib": ["ES2016", "DOM"]
   }
 }
