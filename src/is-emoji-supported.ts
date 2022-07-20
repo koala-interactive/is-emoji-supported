@@ -35,6 +35,18 @@ export function setCacheHandler(store: TCache): void {
   cache = store;
 }
 
+function isJsdom(): boolean {
+  try {
+    if (navigator.userAgent.includes('jsdom')) {
+      return true;
+    }
+  } catch {
+    // Running in Node so navigator is not defined
+  }
+
+  return false;
+}
+
 /**
  * Check if the two pixels parts are perfectly the sames
  *
@@ -44,7 +56,10 @@ export function setCacheHandler(store: TCache): void {
 const isSupported = (() => {
   let ctx = null;
   try {
-    ctx = document.createElement('canvas').getContext('2d');
+    // getContext will print a "not implemented" error when running in jsdom
+    if (!isJsdom()) {
+      ctx = document.createElement('canvas').getContext('2d');
+    }
   } catch {}
 
   // Not in browser env
